@@ -17,10 +17,11 @@ namespace Finals_DSA
     public partial class MainWindow : Window
     {
         public List<Product> Products { get; }
-        public List<Product> Products2 { get; } = new List<Product>();
+        public List<Product> Productss { get; } = new List<Product>();
       
         public class Product
         {
+
             public int Id { get; set; }
             public string? Name { get; set; }
             public string? Description { get; set; }
@@ -90,9 +91,24 @@ namespace Finals_DSA
 
         private void btnAddtoCart_Click(object sender, RoutedEventArgs e)
         {
-         
-
-
+            if (myGridData.SelectedItem is Product selectedProduct)
+            {
+            Product newItem = new Product
+            {
+                Id = selectedProduct.Id,
+                Name = selectedProduct.Name,
+                Description = selectedProduct.Description,
+                Price = selectedProduct.Price
+            };
+            Productss.Add(newItem);
+            myGridData.Items.Refresh();
+            myGridData2.Items.Refresh();
+            MessageBox.Show("Product added to cart successfully");
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to add to cart");
+            }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)

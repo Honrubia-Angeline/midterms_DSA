@@ -30,7 +30,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid x:Name="myGridData2" ItemsSource="{Binding btnAddtoCart_Click}" AutoGenerateColumns = "False" Margin="10,235,10,112" RenderTransformOrigin="0.505,-0.319" >
+        <DataGrid x:Name="myGridData2" ItemsSource="{Binding Productss}" AutoGenerateColumns = "False" Margin="10,235,10,112" RenderTransformOrigin="0.505,-0.319" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
