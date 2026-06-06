@@ -18,7 +18,7 @@ namespace Finals_DSA
     {
         public List<Product> Products { get; }
         public List<Product> Productss { get; } = new List<Product>();
-      
+
         public class Product
         {
 
@@ -93,17 +93,17 @@ namespace Finals_DSA
         {
             if (myGridData.SelectedItem is Product selectedProduct)
             {
-            Product newItem = new Product
-            {
-                Id = selectedProduct.Id,
-                Name = selectedProduct.Name,
-                Description = selectedProduct.Description,
-                Price = selectedProduct.Price
-            };
-            Productss.Add(newItem);
-            myGridData.Items.Refresh();
-            myGridData2.Items.Refresh();
-            MessageBox.Show("Product added to cart successfully");
+                Product newItem = new Product
+                {
+                    Id = selectedProduct.Id,
+                    Name = selectedProduct.Name,
+                    Description = selectedProduct.Description,
+                    Price = selectedProduct.Price
+                };
+                Productss.Add(newItem);
+                myGridData.Items.Refresh();
+                myGridData2.Items.Refresh();
+                MessageBox.Show("Product added to cart successfully");
             }
             else
             {
@@ -113,20 +113,24 @@ namespace Finals_DSA
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            if (myGridData.SelectedItem is Product selectedProduct)
-            {
-                txtId.Text = selectedProduct.Id.ToString();
-                txtName.Text = selectedProduct.Name;
-                txtDescription.Text = selectedProduct.Description;
-                txtPrice.Text = selectedProduct.Price.ToString();
-            }
+            txtId.Text = "";
+            txtName.Text = "";
+            txtDescription.Text = "";
+            txtPrice.Text = "";
         }
 
-
-
-
-
-
-
+        private void btnRemovefromCart_Click(object sender, RoutedEventArgs e)
+        {
+            if (myGridData2.SelectedItem is Product selectedProduct)
+            {
+                Productss.Remove(selectedProduct);
+                myGridData2.Items.Refresh();
+                MessageBox.Show("Product removed from cart successfully");
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to remove");
+            }
+        }
     }
 }
